@@ -1,34 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link href="https://fonts.bunny.net/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
+@section('title', 'Welcome')
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h1>Welcome to Laravel!</h1>
-        <p>This is the default welcome page.</p>
-    </div>
-</body>
-
-</html>
+@section('content')
+<div class="text-center">
+    <h1 class="text-3xl font-bold mb-4">Welcome to the Blog</h1>
+    <p class="text-lg mb-6">Share your thoughts with the world!</p>
+    @auth
+    <a href="{{ route('posts.index') }}" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">View Posts</a>
+    @else
+    <a href="{{ route('register') }}" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Get Started</a>
+    @endauth
+</div>
+@endsection
